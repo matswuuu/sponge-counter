@@ -1,6 +1,5 @@
-const inputsContainer = document.getElementById("inputsContainer");
-
 const count = () => {
+  const inputsContainer = document.getElementById("inputsContainer");
   let allSponges = 0;
 
   const transfer = (sponges) => {
@@ -66,6 +65,7 @@ const count = () => {
 };
 
 const addInput = () => {
+  const inputsContainer = document.getElementById("inputsContainer");
   let input = document.createElement("input");
   input.placeholder = "Уровень";
   inputsContainer.appendChild(input);
