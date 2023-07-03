@@ -64,9 +64,6 @@ const count = (input) => {
 };
 
 const addInput = () => {
-  if (inputsContainer.childNodes.length == 20)
-    return alert("Достигнуто максимальное количество аккаунтов");
-
   let input = document.createElement("input");
   input.placeholder = "Уровень";
   input.onkeyup = function () {
@@ -87,7 +84,7 @@ const addInput = () => {
   inputsContainer.appendChild(input);
   inputsContainer.appendChild(text);
 
-  //alert(inputsContainer.childNodes.values);
-
-  inputsContainer.style.height = inputsContainer.offsetHeight + 30 + "px";
+  inputsContainer.style.height = inputsContainer.offsetHeight + 30 + "%";
 };
+
+addInput()
