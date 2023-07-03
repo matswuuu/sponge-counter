@@ -6,28 +6,30 @@
     <title>Sponge Counter by matswuuu</title>
     <link href="style.css" rel="stylesheet" />
     <script src="index.js" defer></script>
-    <style></style>
   </head>
   <body>
-    <h1>Подсчитыватель губок by matswuuu</h1>
+    <h1 class="title">Подсчитыватель губок by matswuuu</h1>
     <button onclick="addInput()">Добавить поле</button>
 
-    <div id="inputsContainer" class="inputs">
-      <input type="text" name="input" placeholder="Уровень" />
+    <div class="discordWidget">
+      <iframe
+        src="https://discord.com/widget?id=1068804692903206952&theme=dark"
+        width="350"
+        height="500"
+        allowtransparency="true"
+        frameborder="0"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+      ></iframe>
     </div>
 
-    <iframe
-      src="https://discord.com/widget?id=1068804692903206952&theme=dark"
-      width="250"
-      height="300"
-      allowtransparency="true"
-      frameborder="0"
-      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-    ></iframe>
-
-    <div>
-      <button onclick="count()" id="countButton">Подсчитать</button>
+    <div class="allStatics">
+      <legend style="font-size: 25px">Общая статистика</legend>
+      <p id="all">
+        Количество: 0. Сумма: 0<br />
+        Двойных сундуков: 0, шалкеров: 0, стаков: 0, остаток: 0
+      </p>
     </div>
+    <div id="box" class="center"></div>
   </body>
   <footer>
     <a href="https://github.com/matswuuu">matswuuu</a>

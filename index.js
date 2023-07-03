@@ -1,7 +1,8 @@
-const inputsContainer = document.getElementById("inputsContainer");
+const inputsContainer = document.getElementById("box");
 
-const count = () => {
-  let allSponges = 0;
+const count = (input) => {
+  const id = parseInt(input.id) + 1;
+  const text = document.getElementById(id.toString());
 
   const transfer = (sponges) => {
     let amount = sponges;
@@ -44,29 +45,49 @@ const count = () => {
 Двойных сундуков: ${doubleChests}, шалкеров: ${shulkers}, стаков: ${stacks}, остаток: ${amount}`;
   };
 
-  const inputs = inputsContainer.children;
-  for (let i = 0; i < inputs.length; i++) {
-    const lvl = parseInt(inputs[i].value);
+  const sponges = (val) => {
+    const lvl = parseInt(val);
+    return Math.floor((4.5 * (lvl * lvl) - 162.5 * lvl + 2220) / 149720);
+  };
 
-    if (!lvl || lvl < 200) {
-      inputsContainer.removeChild(inputs[i]);
-      continue;
-    }
+  text.innerText = transfer(sponges(input.value));
 
-    const sponges = Math.floor(
-      (4.5 * (lvl * lvl) - 162.5 * lvl + 2220) / 149720
-    );
+  let allSponges = 0;
+  for (inp of inputsContainer.children) {
+    if (parseInt(inp.id) % 2 !== 0) continue;
+    if (!inp.value) continue;
 
-    allSponges += sponges;
+    allSponges += sponges(inp.value);
 
-    alert(transfer(sponges));
+    document.getElementById("all").innerText = transfer(allSponges);
   }
-
-  alert(transfer(allSponges));
 };
 
 const addInput = () => {
+  if (inputsContainer.childNodes.length == 20)
+    return alert("Достигнуто максимальное количество аккаунтов");
+
   let input = document.createElement("input");
   input.placeholder = "Уровень";
+  input.onkeyup = function () {
+    count(input);
+  };
+  input.id = inputsContainer.children.length.toString();
+  input.type = "number";
+  input.min = "200";
+
+  let text = document.createElement("p");
+
+  const id = inputsContainer.children.length + 1;
+  text.id = id.toString();
+  text.style = "display: inline-block;";
+  text.innerText =
+    "Количество: 0. Сумма: 0\nДвойных сундуков: 0, шалкеров: 0, стаков: 0, остаток: 0";
+
   inputsContainer.appendChild(input);
+  inputsContainer.appendChild(text);
+
+  //alert(inputsContainer.childNodes.values);
+
+  inputsContainer.style.height = inputsContainer.offsetHeight + 30 + "px";
 };
