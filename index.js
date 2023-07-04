@@ -83,7 +83,6 @@ const addInput = () => {
 
   const id = inputsContainer.children.length + 1;
   text.id = id.toString();
-  text.style = "display: inline-block;";
   text.innerText = `Количество: 0. Сумма: 0. Уровень острова: 0\n
     Двойных сундуков: 0, шалкеров: 0, стаков: 0, остаток: 0`;
 
