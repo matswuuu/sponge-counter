@@ -7,50 +7,57 @@
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="images\sponge.webp" />
     <script src="index.js" defer></script>
+    <style>
+      body {
+        background-image: url("images//background.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
+    </style>
   </head>
   <body>
     <h1 class="title" style="font-family: Comic Sans MS">
       Sponge Counter by matswuuu
     </h1>
 
-    <div class="discordWidget">
+    <div class="linksBox">
+      <p>Присоединйся к моей Сычевальне =)</p>
+      <p>
+        VK: <a href="https://vk.com/matswuuu" class="link">matswuuu</a> <br />
+        Discord: <a class="link">@matswuuu</a> <br />
+        GitHub:
+        <a href="https://github.com/matswuuu" class="link">matswuuu</a>
+        <br />
+      </p>
+
+      <img src="images\skin.png" alt="Матсу" class="skin" />
+
       <iframe
         src="https://discord.com/widget?id=1068804692903206952&theme=dark"
         width="370"
         height="300"
         allowtransparency="true"
         frameborder="0"
-        footerText="123123"
         sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+        class="discordWidget"
       ></iframe>
     </div>
 
     <div class="information">
       <img src="images\sponge.webp" alt="губка" />
-      <p style="text-align: left">
-        Введите Ваш уровень в поле "уровень". <br />
-        Справа отображается количество губок и их цена. <br />
-        Сверху - общее количество всех губок и их цена. <br />
+      <p>
+        Введите Ваш уровень в поле <b>уровень</b>. <br />
+        <b>Справа</b> указано количество губок и их цена. <br />
+        <b>Сверху</b> - общее количество всех губок и их цена. <br />
       </p>
-
-      <div style="border: 3px solid; border-radius: 10px">
-        <p style="text-align: center">Присоединйся к моей Сычевальне =)</p>
-        <p style="text-align: center; font-family: Comic Sans MS">
-          VK: <a href="https://vk.com/matswuuu" class="link">matswuuu</a> <br />
-          Discord: <a class="link">@matswuuu</a> <br />
-          GitHub:
-          <a href="https://github.com/matswuuu" class="link">matswuuu</a>
-          <br />
-        </p>
-        <img src="images\skin.png" alt="Матсу" class="skin" />
-      </div>
     </div>
 
     <div class="allStatics">
-      <legend style="font-size: 25px">Общая статистика</legend>
+      <legend style="font-size: 25px"><b>Общая статистика</b></legend>
       <button class="addInputButton" onclick="addInput()">Добавить поле</button>
       <p id="all">
-        Количество: 0. Сумма: 0<br />
+        Количество: 0. Сумма: 0. Уровень острова: 0<br />
         Двойных сундуков: 0, шалкеров: 0, стаков: 0, остаток: 0
       </p>
     </div>

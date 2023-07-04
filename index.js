@@ -33,15 +33,21 @@ const count = (input) => {
         price += el + " ";
       });
 
-    let spongesString = "";
-    sponges
-      .toString()
-      .split(/(?=(?:\d{3})+$)/)
-      .forEach((el) => {
-        spongesString += el + " ";
-      });
+    const splitNumber = (value) => {
+      let string = "";
+      value
+        .toString()
+        .split(/(?=(?:\d{3})+$)/)
+        .forEach((el) => {
+          string += el + " ";
+        });
+      return string;
+    };
 
-    return `Количество: ${spongesString}. Сумма: ${price}\n
+    const spongesString = splitNumber(sponges);
+    const isLevel = splitNumber(sponges * 1_500);
+
+    return `Количество: ${spongesString}. Сумма: ${price}. Уровень острова: ${isLevel}\n
 Двойных сундуков: ${doubleChests}, шалкеров: ${shulkers}, стаков: ${stacks}, остаток: ${amount}`;
   };
 
@@ -78,8 +84,8 @@ const addInput = () => {
   const id = inputsContainer.children.length + 1;
   text.id = id.toString();
   text.style = "display: inline-block;";
-  text.innerText =
-    "Количество: 0. Сумма: 0\nДвойных сундуков: 0, шалкеров: 0, стаков: 0, остаток: 0";
+  text.innerText = `Количество: 0. Сумма: 0. Уровень острова: 0\n
+    Двойных сундуков: 0, шалкеров: 0, стаков: 0, остаток: 0`;
 
   inputsContainer.appendChild(input);
   inputsContainer.appendChild(text);
@@ -87,4 +93,4 @@ const addInput = () => {
   inputsContainer.style.height = inputsContainer.offsetHeight + 30 + "%";
 };
 
-addInput()
+addInput();
