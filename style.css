@@ -58,3 +58,11 @@ input[type="number"] {
 .link {
   font-family: Arial;
 }
+
+.skin {
+  border-radius: 20px;
+  margin: auto;
+  display: block;
+
+  padding-bottom: 15px;
+}
