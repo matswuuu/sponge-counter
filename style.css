@@ -7,14 +7,14 @@
   padding-left: 1%;
 }
 
-.spongeImage {
-  float: right;
-  padding-right: 2%;
-}
-
 input {
   margin: 10px;
   border-radius: 5px;
+}
+
+.information {
+  float: right;
+  padding-right: 2%;
 }
 
 .allStatics {
