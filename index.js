@@ -45,7 +45,7 @@ const count = (input) => {
     };
 
     const spongesString = splitNumber(sponges);
-    const isLevel = splitNumber(sponges * 50);
+    const isLevel = splitNumber(sponges * 2500);
 
     return `Количество: ${spongesString}. Сумма: ${price}. Уровень острова: ${isLevel}\n
 Двойных сундуков: ${doubleChests}, шалкеров: ${shulkers}, стаков: ${stacks}, остаток: ${amount}`;
