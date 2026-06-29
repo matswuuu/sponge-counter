@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/matswuuu/sponge-counter#readme",
   "dependencies": {
-    "@vercel/node": "^2.15.2",
-    "vercel": "^30.2.3"
+    "@vercel/node": "^5.8.21",
+    "vercel": "^54.18.0"
   }
 }
