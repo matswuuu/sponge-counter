@@ -1,0 +1,79 @@
+{
+  "spongeCounter": {
+    "xpLevels": 150,
+    "money": 500000,
+    "islandLevel": 1500
+  },
+  "islandCalculator": {
+    "blockTypes": {
+      "sponge": {
+        "label": "Губка",
+        "value": 1500,
+        "icon": "images/sponge.png"
+      },
+      "diamond": {
+        "label": "АБ",
+        "value": 3,
+        "icon": "images/diamond_block.png"
+      },
+      "redstone": {
+        "label": "РБ",
+        "value": 2.5,
+        "icon": "images/redstone_block.png"
+      },
+      "emerald": {
+        "label": "ИБ",
+        "value": 2,
+        "icon": "images/emerald_block.png"
+      },
+      "gold": {
+        "label": "ЗБ",
+        "value": 1.5,
+        "icon": "images/gold_block.png"
+      }
+    },
+    "islandPresets": [
+      {
+        "key": "100x100x256",
+        "label": "100×100×256",
+        "w": 100,
+        "h": 100,
+        "d": 256
+      },
+      {
+        "key": "150x150x256",
+        "label": "150×150×256",
+        "w": 150,
+        "h": 150,
+        "d": 256
+      },
+      {
+        "key": "200x200x256",
+        "label": "200×200×256",
+        "w": 200,
+        "h": 200,
+        "d": 256
+      },
+      {
+        "key": "250x250x256",
+        "label": "250×250×256",
+        "w": 250,
+        "h": 250,
+        "d": 256
+      },
+      {
+        "key": "300x300x256",
+        "label": "300×300×256",
+        "w": 300,
+        "h": 300,
+        "d": 256
+      }
+    ],
+    "customDimensions": {
+      "defaultW": 100,
+      "defaultH": 100,
+      "defaultD": 256
+    },
+    "defaultBlocksPlaced": 1000000
+  }
+}

@@ -25,22 +25,23 @@
       <nav class="mode-switcher">
         <button class="mode-btn active" data-mode="level" onclick="switchMode('level')">По уровню</button>
         <button class="mode-btn" data-mode="sponges" onclick="switchMode('sponges')">По губкам</button>
+        <a href="island-calculator.html" class="mode-btn">Остров</a>
       </nav>
     </header>
 
     <section class="settings card">
       <legend><strong>Настройки</strong></legend>
       <label>
-        XP уровней за губку:
-        <input id="xpLevelsInput" value="200" type="number" min="32" />
+        <img class="block-icon" src="images/sponge.png" alt=""> XP уровней за губку:
+        <input id="xpLevelsInput" type="number" min="32" />
       </label>
       <label>
-        Цена за губку:
-        <input id="moneyInput" value="500000" type="number" min="0" />
+        <img class="block-icon" src="images/sponge.png" alt=""> Цена за губку:
+        <input id="moneyInput" type="number" min="0" />
       </label>
       <label>
-        Уровень острова за губку:
-        <input id="islandInput" value="2500" type="number" min="0" />
+        <img class="block-icon" src="images/sponge.png" alt=""> Уровень острова за губку:
+        <input id="islandInput" type="number" min="0" />
       </label>
     </section>
 
@@ -50,9 +51,12 @@
         Количество: 0. Сумма: 0. Уровень острова: 0<br />
         Двойных сундуков: 0, шалкеров: 0, стаков: 0, остаток: 0
       </p>
-      <button class="addInputButton" onclick="addInput()">Добавить поле</button>
     </section>
 
     <section id="box" class="card"></section>
+
+    <div class="button-row">
+      <button class="addInputButton" onclick="addInput()">Добавить поле</button>
+    </div>
   </body>
 </html>

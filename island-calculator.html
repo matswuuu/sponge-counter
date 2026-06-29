@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Island Calculator — Sponge Counter by matswuuu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="island-calculator.css" rel="stylesheet" />
+    <link rel="icon" href="images/sponge.webp" />
+    <script src="island-calculator.js" defer></script>
+  </head>
+  <body>
+    <!-- ========== Top Bar ========== -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <span class="topbar-logo">Губка-считатель</span>
+        </a>
+        <span class="topbar-author">
+          by <a href="https://matswuuu.dev" target="_blank" rel="noopener">matswuuu</a>
+        </span>
+      </div>
+      <nav class="mode-switcher">
+        <a href="index.html" class="mode-btn">Губки</a>
+        <span class="mode-btn active">Остров</span>
+      </nav>
+    </header>
+
+    <!-- ========== Settings ========== -->
+    <section class="settings card">
+      <legend><strong>Значения блоков</strong></legend>
+      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">
+        Сколько уровня острова даёт каждый блок (можно менять)
+      </p>
+      <div class="block-values" id="blockValuesContainer"></div>
+    </section>
+
+    <!-- ========== Total Stats ========== -->
+    <section class="allStatics card">
+      <legend><strong>Общая статистика</strong></legend>
+      <p id="totalStats">
+        Всего блоков: 0<br />
+        Всего уровень острова: 0
+      </p>
+    </section>
+
+    <!-- ========== Calculator Rows ========== -->
+    <section id="rowsContainer" class="card"></section>
+
+    <!-- ========== Add Row Button ========== -->
+    <div class="button-row">
+      <button class="addRowButton" onclick="addRow()">Добавить строку</button>
+    </div>
+  </body>
+</html>

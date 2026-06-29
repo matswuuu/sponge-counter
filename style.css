@@ -125,6 +125,9 @@ body {
   transition: background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
   user-select: none;
   font-family: var(--font-sans);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .mode-btn:hover {
@@ -220,12 +223,6 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Dynamic input fields inside #box */
-#box input[type="number"] {
-  width: 90px;
-  flex-shrink: 0;
-}
-
 /* ---------- Buttons ---------- */
 button {
   font-family: var(--font-sans);
@@ -256,20 +253,6 @@ button:active {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  min-height: auto !important;
-}
-
-#box p {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: var(--radius-sm);
-  padding: 0.5rem 0.75rem;
-  line-height: 1.5;
-  white-space: pre-line;
-  word-break: break-word;
 }
 
 #all {
@@ -283,13 +266,108 @@ button:active {
   word-break: break-word;
 }
 
+/* ---------- Calculator Row (shared pattern with island-calculator) ---------- */
+.calc-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.3rem 1rem 0.85rem;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: border-color var(--transition), background var(--transition);
+  position: relative;
+}
+
+.calc-row:hover {
+  background: rgba(0, 0, 0, 0.25);
+  border-color: var(--color-border);
+}
+
+/* Row field groups */
+.row-field {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.row-field label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.row-field input[type="number"] {
+  width: 80px;
+}
+
+/* Row result area */
+.row-result {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  line-height: 1.5;
+  white-space: pre-line;
+  word-break: break-word;
+  min-width: 0;
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+/* Remove Row Button */
+.row-remove-btn {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 1;
+  background: transparent;
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  color: #ff5555;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), border-color var(--transition);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.row-remove-btn:hover {
+  background: rgba(255, 80, 80, 0.12);
+  border-color: #ff5555;
+}
+
+/* Button row under the rows card */
+.button-row {
+  width: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.75rem;
+}
+
+/* ---------- Block Textures ---------- */
+.block-icon {
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
 /* ---------- Utility / Legacy ---------- */
 .allStatics {
   text-align: center;
-}
-
-.addInputButton {
-  margin-top: 0.75rem;
 }
 
 .discordWidget,
@@ -328,7 +406,19 @@ button:active {
     width: 100%;
   }
 
-  #box input[type="number"] {
+  .calc-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .row-field input[type="number"] {
+    width: 100%;
+    flex: 1;
+  }
+
+  .row-result {
+    margin-left: 0;
     width: 100%;
   }
 }

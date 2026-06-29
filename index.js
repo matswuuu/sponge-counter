@@ -1,8 +1,17 @@
+/* =============================================
+   Sponge Counter — Logic
+   Defaults loaded from config.json
+   ============================================= */
+
+let CONFIG = null;
+
 const inputsContainer = document.getElementById("box");
 const allStatsEl = document.getElementById("all");
 const allStatsSection = document.querySelector(".allStatics");
 
 let currentMode = "level"; // "level" | "sponges"
+
+let rowIdCounter = 0;
 
 const getXPFromLevel = (level) => {
     if (level <= 16) return level * level + 6 * level;
@@ -37,9 +46,20 @@ const xpLevelsInput = document.getElementById("xpLevelsInput");
 const moneyInput = document.getElementById("moneyInput");
 const islandInput = document.getElementById("islandInput");
 
-const getXpPerSponge = () => getXPFromLevel(parseInt(xpLevelsInput.value, 10) || 150);
-const getMoneyPerSponge = () => parseInt(moneyInput.value, 10) || 500000;
-const getIslandPerSponge = () => parseInt(islandInput.value, 10) || 1500;
+const getXpPerSponge = () => {
+    const val = parseInt(xpLevelsInput.value, 10);
+    return val > 0 ? getXPFromLevel(val) : getXPFromLevel(CONFIG.spongeCounter.xpLevels);
+};
+
+const getMoneyPerSponge = () => {
+    const val = parseInt(moneyInput.value, 10);
+    return val > 0 ? val : CONFIG.spongeCounter.money;
+};
+
+const getIslandPerSponge = () => {
+    const val = parseInt(islandInput.value, 10);
+    return val > 0 ? val : CONFIG.spongeCounter.islandLevel;
+};
 
 const breakdownSponges = (amount) => {
     const CHEST_SLOTS = 54;
@@ -120,61 +140,85 @@ const getSpongesFromInput = (value) => {
     return num;
 };
 
-const count = (input) => {
-    const id = parseInt(input.id, 10) + 1;
-    const text = document.getElementById(id.toString());
-    if (!text) return;
+// ---------- Total recalculation across all rows ----------
+const updateTotal = () => {
+    let allSponges = 0;
+    for (const row of inputsContainer.children) {
+        if (!row.classList.contains("calc-row")) continue;
+        const inp = row.querySelector("input");
+        if (!inp || !inp.value) continue;
+        allSponges += getSpongesFromInput(inp.value);
+    }
+    allStatsEl.textContent = formatResult(allSponges);
+};
+
+// ---------- Single row calculation ----------
+const count = (row) => {
+    const input = row.querySelector("input");
+    const text = row.querySelector(".row-level-result");
+    if (!input || !text) return;
 
     const sponges = getSpongesFromInput(input.value);
     text.textContent = formatResult(sponges);
 
-    let allSponges = 0;
-    for (const child of inputsContainer.children) {
-        if (parseInt(child.id, 10) % 2 !== 0) continue;
-        if (!child.value) continue;
-        allSponges += getSpongesFromInput(child.value);
-    }
-
-    allStatsEl.textContent = formatResult(allSponges);
+    updateTotal();
 };
 
+// ---------- Remove row ----------
+const removeRow = (rowId) => {
+    const row = document.querySelector(`.calc-row[data-row-id="${rowId}"]`);
+    if (!row) return;
+
+    const allRows = inputsContainer.querySelectorAll(".calc-row");
+    if (allRows.length <= 1) return;
+
+    row.remove();
+    updateTotal();
+};
+
+// ---------- Add row ----------
 const addInput = () => {
-    const input = document.createElement("input");
-    input.id = inputsContainer.children.length.toString();
-    input.type = "number";
-    input.onkeyup = () => count(input);
+    const id = rowIdCounter++;
+    const placeholder = currentMode === "level" ? "Уровень" : "Губок";
 
-    if (currentMode === "level") {
-        input.placeholder = "Уровень";
-        input.min = "0";
-    } else {
-        input.placeholder = "Губок";
-        input.min = "0";
-    }
+    const row = document.createElement("div");
+    row.className = "calc-row";
+    row.dataset.rowId = id;
 
-    const text = document.createElement("p");
-    const id = inputsContainer.children.length + 1;
-    text.id = id.toString();
-    text.textContent = defaultResult();
+    row.innerHTML = `
+        <button class="row-remove-btn" data-row="${id}" title="Удалить строку">✕</button>
+        <div class="row-field">
+            <label><img class="block-icon" src="images/sponge.png" alt=""></label>
+            <input type="number" placeholder="${placeholder}" min="0" />
+        </div>
+        <div class="row-result">
+            <span class="row-level-result">${defaultResult().replace(/\n/g, "<br>")}</span>
+        </div>
+    `;
 
-    inputsContainer.appendChild(input);
-    inputsContainer.appendChild(text);
+    const input = row.querySelector("input");
+    const text = row.querySelector(".row-level-result");
+    const removeBtn = row.querySelector(".row-remove-btn");
+
+    input.addEventListener("input", () => count(row));
+    removeBtn.addEventListener("click", () => removeRow(id));
+
+    // Store refs
+    row._refs = { input, text, removeBtn };
+
+    inputsContainer.appendChild(row);
 };
 
 const recalculateAll = () => {
-    for (const child of inputsContainer.children) {
-        if (parseInt(child.id, 10) % 2 !== 0) continue;
-        if (!child.value) continue;
-        count(child);
+    for (const row of inputsContainer.children) {
+        if (!row.classList.contains("calc-row")) continue;
+        count(row);
     }
 };
 
 xpLevelsInput.oninput = moneyInput.oninput = islandInput.oninput = () => {
     recalculateAll();
 };
-
-// --- Initialisation ---
-addInput();
 
 // ---------- Mode switching ----------
 
@@ -196,8 +240,32 @@ const switchMode = (mode) => {
                 : "<strong>Общая статистика (по губкам)</strong>";
     }
 
-    // Clear and rebuild inputs with new placeholder
+    // Clear and rebuild rows
     inputsContainer.innerHTML = "";
+    rowIdCounter = 0;
     addInput();
     allStatsEl.textContent = defaultResult();
 };
+
+// ---------- Initialise from config ----------
+const init = () => {
+    xpLevelsInput.value = CONFIG.spongeCounter.xpLevels;
+    moneyInput.value = CONFIG.spongeCounter.money;
+    islandInput.value = CONFIG.spongeCounter.islandLevel;
+
+    addInput();
+};
+
+// ---------- Load config and start ----------
+fetch("config.json")
+    .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+    })
+    .then((config) => {
+        CONFIG = config;
+        init();
+    })
+    .catch((err) => {
+        console.error("Failed to load config.json:", err);
+    });
