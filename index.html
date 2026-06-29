@@ -1,52 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sponge Counter by matswuuu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link href="style.css" rel="stylesheet" />
-    <link rel="icon" href="images\sponge.webp" />
+    <link rel="icon" href="images/sponge.webp" />
     <script src="index.js" defer></script>
   </head>
   <body>
-    <h1 class="title">Sponge Counter by matswuuu</h1>
-    <h2 class="title">Хорошие новости! Считалка губок и катализаторов теперь доступна в дискорде скайблока -> <a href="https://discord.gg/rb2AytFBnD">ССЫЛКА</a></h2>
-    <h2 class="title">Хорошие новости! Считалка губок и катализаторов теперь доступна в дискорде скайблока -> <a href="https://discord.gg/rb2AytFBnD">ССЫЛКА</a></h2>
-    <h2 class="title">Хорошие новости! Считалка губок и катализаторов теперь доступна в дискорде скайблока -> <a href="https://discord.gg/rb2AytFBnD">ССЫЛКА</a></h2>
-    <h2 class="title">Хорошие новости! Считалка губок и катализаторов теперь доступна в дискорде скайблока -> <a href="https://discord.gg/rb2AytFBnD">ССЫЛКА</a></h2>
-    <h2 class="title">Хорошие новости! Считалка губок и катализаторов теперь доступна в дискорде скайблока -> <a href="https://discord.gg/rb2AytFBnD">ССЫЛКА</a></h2>
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="topbar-logo">Губка-считатель</span>
+        <span class="topbar-author">
+          by <a href="https://matswuuu.dev" target="_blank" rel="noopener">matswuuu</a>
+        </span>
+      </div>
+      <nav class="mode-switcher">
+        <button class="mode-btn active" data-mode="level" onclick="switchMode('level')">По уровню</button>
+        <button class="mode-btn" data-mode="sponges" onclick="switchMode('sponges')">По губкам</button>
+      </nav>
+    </header>
 
-    <div class="linksBox">
-      <p>Присоединяйся к моей Сычевальне =)</p>
-      <p>
-        VK: <a href="https://vk.com/matswuuu" class="link">matswuuu</a> <br />
-        Discord: <a class="link">@matswuuu</a> <br />
-        GitHub:
-        <a href="https://github.com/matswuuu" class="link">matswuuu</a>
-        <br />
-      </p>
+    <section class="settings card">
+      <legend><strong>Настройки</strong></legend>
+      <label>
+        XP уровней за губку:
+        <input id="xpLevelsInput" value="200" type="number" min="32" />
+      </label>
+      <label>
+        Цена за губку:
+        <input id="moneyInput" value="500000" type="number" min="0" />
+      </label>
+      <label>
+        Уровень острова за губку:
+        <input id="islandInput" value="2500" type="number" min="0" />
+      </label>
+    </section>
 
-      <img src="images\skin.png" alt="Матсу" class="skin" />
-    </div>
-
-    <div class="information">
-      <img src="images\sponge.webp" alt="губка" />
-      <p>
-        Введите Ваш уровень в поле <b>уровень</b>. <br />
-        <b>Справа</b> указано количество губок и их цена. <br />
-        <b>Сверху</b> - общее количество всех губок и их цена. <br />
-      </p>
-    </div>
-
-    <div class="allStatics">
-      <legend style="font-size: 25px"><b>Общая статистика</b></legend>
+    <section class="allStatics card">
+      <legend><strong>Общая статистика</strong></legend>
       <p id="all">
         Количество: 0. Сумма: 0. Уровень острова: 0<br />
         Двойных сундуков: 0, шалкеров: 0, стаков: 0, остаток: 0
       </p>
-
       <button class="addInputButton" onclick="addInput()">Добавить поле</button>
-    </div>
+    </section>
 
-    <div id="box" class="center"></div>
+    <section id="box" class="card"></section>
   </body>
 </html>
