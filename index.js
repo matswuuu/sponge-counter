@@ -37,9 +37,9 @@ const xpLevelsInput = document.getElementById("xpLevelsInput");
 const moneyInput = document.getElementById("moneyInput");
 const islandInput = document.getElementById("islandInput");
 
-const getXpPerSponge = () => getXPFromLevel(parseInt(xpLevelsInput.value, 10) || 200);
+const getXpPerSponge = () => getXPFromLevel(parseInt(xpLevelsInput.value, 10) || 150);
 const getMoneyPerSponge = () => parseInt(moneyInput.value, 10) || 500000;
-const getIslandPerSponge = () => parseInt(islandInput.value, 10) || 2500;
+const getIslandPerSponge = () => parseInt(islandInput.value, 10) || 1500;
 
 const breakdownSponges = (amount) => {
     const CHEST_SLOTS = 54;
