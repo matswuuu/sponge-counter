@@ -320,7 +320,7 @@ const init = () => {
 };
 
 // ---------- Load config and start ----------
-fetch("config.json")
+fetch("../config.json")
   .then((res) => {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
