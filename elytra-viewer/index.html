@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Элитры — Sponge Counter by matswuuu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="elytra-viewer.css" rel="stylesheet" />
+    <link rel="icon" href="../images/sponge.webp" />
+    <script src="elytra-viewer.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-left">
+        <a href="../index.html" style="text-decoration: none; color: inherit;">
+          <span class="topbar-logo">Губка-считатель</span>
+        </a>
+        <span class="topbar-author">
+          by <a href="https://matswuuu.dev" target="_blank" rel="noopener">matswuuu</a>
+        </span>
+      </div>
+      <nav class="mode-switcher">
+        <a href="../index.html" class="mode-btn">Губки</a>
+        <a href="../island-calculator/" class="mode-btn">Остров</a>
+        <a href="../compressed-calculator/" class="mode-btn">Сжатие</a>
+        <span class="mode-btn active">Элитры</span>
+      </nav>
+    </header>
+
+    <section class="card">
+      <legend><strong>Элитры</strong></legend>
+      <p>Скины на элитры через OptiFine. Чтобы получить скин, переименуйте элитру на наковальне — текстура изменится автоматически.</p>
+      <div class="controls">
+        <input id="searchInput" type="text" placeholder="Поиск..." />
+      </div>
+    </section>
+
+    <section class="card">
+      <div id="gallery" class="elytra-grid"></div>
+    </section>
+  </body>
+</html>
