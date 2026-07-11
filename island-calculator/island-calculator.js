@@ -157,7 +157,7 @@ const createRow = () => {
   const updateBlockIcon = (type) => {
     const data = CONFIG.islandCalculator.blockTypes[type];
     if (data) {
-      blockIcon.src = data.icon;
+      blockIcon.src = "../" + data.icon;
       blockIcon.alt = data.label;
     }
   };
@@ -292,7 +292,7 @@ const buildSettings = () => {
 
   for (const [key, data] of Object.entries(CONFIG.islandCalculator.blockTypes)) {
     const label = document.createElement("label");
-    label.innerHTML = `<img class="block-icon" src="${data.icon}" alt=""> ${data.label}: <input id="value-${key}" type="number" value="${data.value}" step="0.01" min="0" />`;
+    label.innerHTML = `<img class="block-icon" src="../${data.icon}" alt=""> ${data.label}: <input id="value-${key}" type="number" value="${data.value}" step="0.01" min="0" />`;
     container.appendChild(label);
 
     const input = label.querySelector("input");
