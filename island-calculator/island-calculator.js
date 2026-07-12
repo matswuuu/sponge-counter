@@ -286,18 +286,55 @@ const recalculateAll = () => {
   }
 };
 
+// ---------- Tooltip content updater ----------
+const updateTooltip = (key) => {
+  const tooltip = document.querySelector(`#value-${key}`)?.closest("label")?.querySelector(".block-tooltip");
+  if (!tooltip) return;
+
+  const value = parseFloat(valueInputs[key]?.value) || 0;
+  const stackVal = STACK_SIZE * value;
+  const shulkerVal = SHULKER_CAPACITY * value;
+  const dcVal = DC_CAPACITY * value;
+
+  tooltip.innerHTML =
+    `<span class="tooltip-label">Стак (64):</span> <span class="tooltip-value">${formatNumber(stackVal)}</span>\n` +
+    `<span class="tooltip-label">Шалкер (1 728):</span> <span class="tooltip-value">${formatNumber(shulkerVal)}</span>\n` +
+    `<span class="tooltip-label">Д. сундук шалкеров (93 312):</span> <span class="tooltip-value">${formatNumber(dcVal)}</span>`;
+};
+
 // ---------- Build settings UI from config ----------
 const buildSettings = () => {
   const container = document.getElementById("blockValuesContainer");
 
   for (const [key, data] of Object.entries(CONFIG.islandCalculator.blockTypes)) {
     const label = document.createElement("label");
-    label.innerHTML = `<img class="block-icon" src="../${data.icon}" alt=""> ${data.label}: <input id="value-${key}" type="number" value="${data.value}" step="0.01" min="0" />`;
+
+    const info = document.createElement("span");
+    info.className = "block-value-info";
+    info.innerHTML = `<img class="block-icon" src="../${data.icon}" alt=""> ${data.label}:`;
+
+    const tooltip = document.createElement("span");
+    tooltip.className = "block-tooltip";
+    info.appendChild(tooltip);
+
+    const input = document.createElement("input");
+    input.id = `value-${key}`;
+    input.type = "number";
+    input.value = data.value;
+    input.step = "0.01";
+    input.min = "0";
+
+    label.appendChild(info);
+    label.appendChild(input);
     container.appendChild(label);
 
-    const input = label.querySelector("input");
     valueInputs[key] = input;
-    input.addEventListener("input", recalculateAll);
+    input.addEventListener("input", () => {
+      updateTooltip(key);
+      recalculateAll();
+    });
+
+    updateTooltip(key);
   }
 };
 

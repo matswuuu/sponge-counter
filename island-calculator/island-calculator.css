@@ -192,6 +192,11 @@ h1, h2, h3, legend {
 }
 
 /* ---------- Block Values Settings ---------- */
+.settings {
+  position: relative;
+  z-index: 1;
+}
+
 .settings .block-values {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -209,6 +214,52 @@ h1, h2, h3, legend {
 .settings .block-values input[type="number"] {
   width: 80px;
   flex-shrink: 0;
+}
+
+/* ---------- Block Value Tooltip ---------- */
+.block-value-info {
+  position: relative;
+  cursor: help;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.block-tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(15, 15, 26, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  white-space: pre-line;
+  line-height: 1.8;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(99, 102, 241, 0.15);
+  min-width: 260px;
+}
+
+.block-tooltip .tooltip-label {
+  color: var(--color-text-muted);
+}
+
+.block-tooltip .tooltip-value {
+  color: var(--color-accent-hover);
+  font-weight: 500;
+}
+
+.block-value-info:hover .block-tooltip {
+  opacity: 1;
 }
 
 /* ---------- Inputs & Selects ---------- */
