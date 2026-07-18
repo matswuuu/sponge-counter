@@ -75,5 +75,158 @@
       "defaultD": 256
     },
     "defaultBlocksPlaced": 1000000
+  },
+  "spawnerCalculator": {
+    "fragmentTypes": [
+      {
+        "key": "pig",
+        "label": "Свинья"
+      },
+      {
+        "key": "chicken",
+        "label": "Курица"
+      },
+      {
+        "key": "zombie",
+        "label": "Зомби"
+      },
+      {
+        "key": "skeleton",
+        "label": "Скелет"
+      },
+      {
+        "key": "slime",
+        "label": "Слизень"
+      },
+      {
+        "key": "enderman",
+        "label": "Эндермен"
+      },
+      {
+        "key": "creeper",
+        "label": "Крипер"
+      },
+      {
+        "key": "blaze",
+        "label": "Блейз"
+      },
+      {
+        "key": "squid",
+        "label": "Спрут"
+      }
+    ],
+    "spawners": [
+      {
+        "key": "pig",
+        "label": "Свинья",
+        "money": 50000,
+        "fragments": { }
+      },
+      {
+        "key": "chicken",
+        "label": "Курица",
+        "money": 70000,
+        "fragments": {
+          "pig": 10
+        }
+      },
+      {
+        "key": "zombie",
+        "label": "Зомби",
+        "money": 60000,
+        "fragments": {
+          "pig": 10,
+          "chicken": 10
+        }
+      },
+      {
+        "key": "skeleton",
+        "label": "Скелет",
+        "money": 80000,
+        "fragments": {
+          "pig": 10,
+          "chicken": 10,
+          "zombie": 10
+        }
+      },
+      {
+        "key": "slime",
+        "label": "Слизень",
+        "money": 160000,
+        "fragments": {
+          "chicken": 10,
+          "zombie": 10,
+          "skeleton": 10
+        }
+      },
+      {
+        "key": "enderman",
+        "label": "Эндермен",
+        "money": 240000,
+        "fragments": {
+          "zombie": 10,
+          "skeleton": 10,
+          "slime": 10
+        }
+      },
+      {
+        "key": "cow",
+        "label": "Корова",
+        "money": 100000,
+        "fragments": {
+          "pig": 10,
+          "chicken": 10,
+          "zombie": 10,
+          "skeleton": 10,
+          "slime": 10
+        }
+      },
+      {
+        "key": "creeper",
+        "label": "Крипер",
+        "money": 250000,
+        "fragments": {
+          "skeleton": 10,
+          "slime": 10,
+          "enderman": 10
+        }
+      },
+      {
+        "key": "blaze",
+        "label": "Блейз",
+        "money": 400000,
+        "fragments": {
+          "slime": 10,
+          "enderman": 10,
+          "creeper": 10
+        }
+      },
+      {
+        "key": "squid",
+        "label": "Спрут",
+        "money": 600000,
+        "fragments": {
+          "enderman": 100,
+          "creeper": 100,
+          "blaze": 100
+        }
+      },
+      {
+        "key": "iron_golem",
+        "label": "Железный голем",
+        "money": 700000,
+        "fragments": {
+          "pig": 10,
+          "chicken": 10,
+          "zombie": 10,
+          "skeleton": 10,
+          "slime": 10,
+          "enderman": 10,
+          "creeper": 10,
+          "blaze": 10,
+          "squid": 10
+        }
+      }
+    ]
   }
 }

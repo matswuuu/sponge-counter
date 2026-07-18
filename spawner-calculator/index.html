@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Спавнеры — Sponge Counter by matswuuu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="spawner-calculator.css" rel="stylesheet" />
+    <link rel="icon" href="../images/sponge.webp" />
+    <script src="spawner-calculator.js" defer></script>
+  </head>
+  <body>
+    <!-- ========== Top Bar ========== -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <a href="../index.html" style="text-decoration: none; color: inherit;">
+          <span class="topbar-logo">Губка-считатель</span>
+        </a>
+        <span class="topbar-author">
+          by <a href="https://matswuuu.dev" target="_blank" rel="noopener">matswuuu</a>
+        </span>
+      </div>
+      <nav class="mode-switcher">
+        <a href="../index.html" class="mode-btn">Губки</a>
+        <a href="../island-calculator/" class="mode-btn">Остров</a>
+        <a href="../compressed-calculator/" class="mode-btn">Сжатие</a>
+        <a href="../elytra-viewer/" class="mode-btn">Элитры</a>
+        <span class="mode-btn active">Спавнеры</span>
+      </nav>
+    </header>
+
+    <!-- ========== Fragment Type Settings ========== -->
+    <section class="settings card">
+      <details>
+        <summary><strong>Типы осколков</strong></summary>
+        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">
+          Названия типов осколков (можно менять)
+        </p>
+        <div class="fragment-types" id="fragmentTypesContainer"></div>
+        <div class="button-row" style="margin-top: 0.75rem;">
+          <button id="addFragmentTypeBtn" class="add-btn">Добавить тип осколка</button>
+        </div>
+      </details>
+    </section>
+
+    <!-- ========== Spawner Presets ========== -->
+    <section class="settings card">
+      <details>
+        <summary><strong>Цены спавнеров</strong></summary>
+        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">
+          Стоимость каждого спавнера в деньгах и осколках (можно менять)
+        </p>
+        <div class="spawner-presets" id="spawnerPresetsContainer"></div>
+        <div class="button-row" style="margin-top: 0.75rem;">
+          <button id="addSpawnerBtn" class="add-btn">Добавить спавнер</button>
+        </div>
+      </details>
+    </section>
+
+    <!-- ========== Input ========== -->
+    <section class="card">
+      <legend><strong>Расчёт</strong></legend>
+      <div class="input-row">
+        <label>
+          Спавнер:
+          <select id="spawnerSelect"></select>
+        </label>
+      </div>
+      <div class="quantity-row">
+        <label class="quantity-label">
+          Количество:
+          <input id="quantityInput" type="number" min="0" value="1" />
+        </label>
+        <div class="breakdown-group">
+          <label>Д. сундуков:</label>
+          <input id="dcInput" type="number" min="0" value="0" />
+        </div>
+        <div class="breakdown-group">
+          <label>Шалкеров:</label>
+          <input id="shulkerInput" type="number" min="0" value="0" />
+        </div>
+        <div class="breakdown-group">
+          <label>Стаков:</label>
+          <input id="stackInput" type="number" min="0" value="0" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Results ========== -->
+    <section class="card">
+      <legend><strong>Результат</strong></legend>
+      <div id="resultsContainer">
+        <p class="result-placeholder">Выберите спавнер и количество</p>
+      </div>
+    </section>
+  </body>
+</html>
