@@ -433,7 +433,7 @@ const init = () => {
   buildSpawnerPresets();
   buildSpawnerSelect();
 
-   document.getElementById("spawnerSelect").addEventListener("change", recalculate);
+  document.getElementById("spawnerSelect").addEventListener("change", recalculate);
   document.getElementById("quantityInput").addEventListener("input", onQuantityChange);
   document.getElementById("dcInput").addEventListener("input", onBreakdownChange);
   document.getElementById("shulkerInput").addEventListener("input", onBreakdownChange);
